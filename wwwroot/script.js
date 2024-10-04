@@ -1,5 +1,5 @@
 /* JP Crawford */
-function apiSearch() {
+function apiSearch(feelingLucky = false) {
     var params = {
         'q': $('#query').val(),
         'count': 50,
@@ -15,18 +15,26 @@ function apiSearch() {
         }
     })
         .done(function (data) {
-            var len = data.webPages.value.length;
-            var results = '';
-            for (i = 0; i < len; i++) {
-                results += `<p><a href="${data.webPages.value[i].url}">${data.webPages.value[i].name}</a>: ${data.webPages.value[i].snippet}</p>`;
-            }
-
-            $('#searchResults').html(results);
-            $('#searchResults').dialog({
-                open: function () {
-                    $(this).css('visibility', 'visible');
+            if (feelingLucky) {
+                if (data.webPages && data.webPages.value && data.webPages.value.length > 0) {
+                    window.location.href = data.webPages.value[0].url;
+                } else {
+                    alert('Your luck detector is broken! No results found.');
                 }
-            });
+            } else {
+                var len = data.webPages.value.length;
+                var results = '';
+                for (i = 0; i < len; i++) {
+                    results += `<p><a href="${data.webPages.value[i].url}">${data.webPages.value[i].name}</a>: ${data.webPages.value[i].snippet}</p>`;
+                }
+
+                $('#searchResults').html(results);
+                $('#searchResults').dialog({
+                    open: function () {
+                        $(this).css('visibility', 'visible');
+                    }
+                });
+            }
         })
         .fail(function () {
             alert('error');
@@ -77,6 +85,11 @@ function gopilotAlert() {
 }
 
 $(document).ready(function () {
+    /* Clear input text fields on reload */
+    $('#query').val('');
+    $('#gpQuery').val('');
+
+    /* Preload background images and set a random one */
     preloadImages(images);
     $('#background').css('background-image', newBackground());
 
@@ -101,6 +114,13 @@ $(document).ready(function () {
     $('#query').on('keypress', function(e) {
         if (e.which === 13 && $('#query').val() !== '') {
             apiSearch();
+        }
+    });
+
+    /* Search query with Lucky button click */
+    $('#luckyButton').on('click', function() {
+        if ($('#query').val() !== '') {
+            apiSearch(true);
         }
     });
 
