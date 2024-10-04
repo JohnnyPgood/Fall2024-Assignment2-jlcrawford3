@@ -46,7 +46,7 @@ $(document).ready(function () {
     //     'misty-peak.jpg', 'night-sky.jpg', 'river-boats.jpg', 'river-rocks.jpg',
     //     'rock-sculpture.jpg', 'rocky-waves.jpg', 'snow-ghost.jpg', 'spinal-tunnel.jpg',
     //     'sunset-hills.jpg', 'vanagon.jpg'];
-    const image = ['forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg'];
+    const images = ['forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg'];
     const randomBkg = images[Math.floor(Math.random() * images.length)];
-    $('body').css('background-image', `url('/media/bkg/${randomBkg}')`);
+    $('body').css('background-image', `url('media/bkg/${randomBkg}')`);
 });
