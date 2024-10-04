@@ -41,12 +41,26 @@ $(document).ready(function () {
     });
 
     /* Random background on load */
-    // const images = ['antelope-canyon.jpg', 'aurora.jpg', 'canal-city.jpg', 'colosseum.jpg',
-    //     'forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg', 'ice-mountain.jpg',
-    //     'misty-peak.jpg', 'night-sky.jpg', 'river-boats.jpg', 'river-rocks.jpg',
-    //     'rock-sculpture.jpg', 'rocky-waves.jpg', 'snow-ghost.jpg', 'spinal-tunnel.jpg',
-    //     'sunset-hills.jpg', 'vanagon.jpg'];
-    const images = ['forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg'];
+    const images = ['antelope-canyon.jpg', 'aurora.jpg', 'canal-city.jpg', 'colosseum.jpg',
+        'forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg', 'ice-mountain.jpg',
+        'misty-peak.jpg', 'night-sky.jpg', 'river-boats.jpg', 'river-rocks.jpg',
+        'rock-sculpture.jpg', 'rocky-waves.jpg', 'snow-ghost.jpg', 'spinal-tunnel.jpg',
+        'sunset-hills.jpg', 'vanagon.jpg'];
     const randomBkg = images[Math.floor(Math.random() * images.length)];
     $('body').css('background-image', `url('media/bkg/${randomBkg}')`);
+
+
+    /* GoPilot form submission */
+    $('#gopilotButton').on('click', function () {
+        const queryVal = $('#query').val();
+
+        if (queryVal === '') {
+            alert('Gopilot - Your everyday search companion. Please enter a query!');
+            return;
+        }
+
+        const encodedQuery = encodeURIComponent(queryVal);
+        const gopilotUrl = `https://lmgtfy.click/?q=${encodedQuery}`;
+        window.location.href = gopilotUrl;
+    });
 });
