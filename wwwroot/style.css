@@ -29,7 +29,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-/*    background-image: url('/media/bkg/hotair-balloons.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -43,15 +42,22 @@ header {
     background-color: rgba(255, 255, 255, 0.0);
 }
 
-.bingle {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #eee;
-    padding-left: 1.5rem;
-    padding-top: 1.0rem;
-    padding-bottom: 1.5rem;
+.top-bar {
+    background: linear-gradient(to top, rgba(100, 100, 100, 0), rgba(32, 32, 32, 0.7));
     display: flex;
     align-items: center;
-    background: linear-gradient(to top, rgba(100, 100, 100, 0), rgba(32, 32, 32, 0.7));
+}
+
+#bingle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #eee;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 1.0rem;
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .logo {
