@@ -19,7 +19,9 @@ function apiSearch(feelingLucky = false) {
                 if (data.webPages && data.webPages.value && data.webPages.value.length > 0) {
                     window.location.href = data.webPages.value[0].url;
                 } else {
-                    alert('Your luck detector is broken! No results found.');
+                    $('#badLuckDialog').dialog({
+                        modal: true
+                    });
                 }
             } else {
                 var len = data.webPages.value.length;
@@ -84,6 +86,14 @@ function gopilotAlert() {
     });
 }
 
+/* Current Time */
+function currentTime() {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes}`;
+}
+
 $(document).ready(function () {
     /* Clear input text fields on reload */
     $('#query').val('');
@@ -119,7 +129,7 @@ $(document).ready(function () {
 
     /* Search query with Lucky button click */
     $('#luckyButton').on('click', function() {
-        if ($('#query').val() !== '') {
+        if ($('#query').val() === '') {
             apiSearch(true);
         }
     });
@@ -139,5 +149,15 @@ $(document).ready(function () {
             return;
         }
         gopilotQuery(queryVal);
+    });
+
+    /* Current Time Button Press */
+    $('#timeButton').on('click', function() {
+        $('#timeDialog').dialog({
+            modal: true,
+            open: function() {
+                $('#timeDisplay').text(currentTime());
+            }
+        });
     });
 });
