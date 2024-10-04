@@ -35,9 +35,16 @@ function apiSearch() {
 
 $(document).ready(function () {
 
-    /* Search button click event */
+    /* Search button click */
     $('#searchButton').on('click', function() {
         apiSearch();
+    });
+
+    /* Enter key query */
+    $('#query').on('keypress', function(e) {
+        if (e.which === 13 && $('#query').val() !== '') {
+            apiSearch();
+        }
     });
 
     /* Random background on load */

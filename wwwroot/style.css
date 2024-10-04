@@ -45,12 +45,13 @@ header {
 
 .bingle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #737373;
+    color: #eee;
     padding-left: 1.5rem;
     padding-top: 1.0rem;
-    margin-bottom: 1.0rem;
+    padding-bottom: 1.5rem;
     display: flex;
     align-items: center;
+    background: linear-gradient(to top, rgba(100, 100, 100, 0), rgba(32, 32, 32, 0.7));
 }
 
 .logo {
