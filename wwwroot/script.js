@@ -35,18 +35,6 @@ function apiSearch() {
 
 $(document).ready(function () {
 
-    /* Search button click */
-    $('#searchButton').on('click', function() {
-        apiSearch();
-    });
-
-    /* Enter key query */
-    $('#query').on('keypress', function(e) {
-        if (e.which === 13 && $('#query').val() !== '') {
-            apiSearch();
-        }
-    });
-
     /* Random background on load */
     const images = ['antelope-canyon.jpg', 'aurora.jpg', 'canal-city.jpg', 'colosseum.jpg',
         'forest.jpg', 'grand-canyon.jpg', 'hotair-balloons.jpg', 'ice-mountain.jpg',
@@ -56,18 +44,49 @@ $(document).ready(function () {
     const randomBkg = images[Math.floor(Math.random() * images.length)];
     $('body').css('background-image', `url('media/bkg/${randomBkg}')`);
 
+    /* Search query with button click */
+    $('#searchButton').on('click', function() {
+        apiSearch();
+    });
 
-    /* GoPilot form submission */
-    $('#gopilotButton').on('click', function () {
-        const queryVal = $('#query').val();
-
-        if (queryVal === '') {
-            alert('Gopilot - Your everyday search companion. Please enter a query!');
-            return;
+    /* Search query with Enter*/
+    $('#query').on('keypress', function(e) {
+        if (e.which === 13 && $('#query').val() !== '') {
+            apiSearch();
         }
+    });
 
+    /* Gopilot query */
+    function gopilotQuery(queryVal) {
         const encodedQuery = encodeURIComponent(queryVal);
         const gopilotUrl = `https://lmgtfy.click/?q=${encodedQuery}`;
         window.location.href = gopilotUrl;
+    }
+
+    /* Gopilot query with Enter */
+    $('#gpQuery').on('keypress', function(e) {
+        if (e.which === 13 && $('#gpQuery').val() !== '') {
+            gopilotQuery($('#gpQuery').val());
+        }
+    });
+
+    /* Gopilot dialog */
+    function gopilotAlert() {
+        $('#gopilotDialog').dialog({
+            modal: true,
+            open: function() {
+                $('#gpQuery').focus();
+            }
+        });
+    }
+
+    /* Gopilot Button Press */
+    $('#gopilotButton').on('click', function () {
+        const queryVal = $('#query').val();
+        if (queryVal === '') {
+            gopilotAlert();
+            return;
+        }
+        gopilotQuery(queryVal);
     });
 });
