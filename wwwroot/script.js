@@ -41,6 +41,14 @@ const images = ['antelope-canyon.jpg', 'aurora.jpg', 'canal-city.jpg', 'colosseu
     'sunset-hills.jpg', 'vanagon.jpg'];
 let unusedImages = [...images];
 
+/* Preload Images */
+function preloadImages(imageArray) {
+    imageArray.forEach((image) => {
+        const img = new Image();
+        img.src = `media/bkg/${image}`;
+    });
+}
+
 /* Set random background that hasn't been used */
 function newBackground() {
     if (unusedImages.length === 0) {
@@ -48,7 +56,7 @@ function newBackground() {
     }
     const randomIndex = Math.floor(Math.random() * unusedImages.length);
     const randomBkg = unusedImages.splice(randomIndex, 1)[0];
-    $('body').css('background-image', `url('media/bkg/${randomBkg}')`);
+    return `url('media/bkg/${randomBkg}')`;
 }
 
 /* Gopilot query */
@@ -69,12 +77,19 @@ function gopilotAlert() {
 }
 
 $(document).ready(function () {
-    /* Random background on load */
-    newBackground();
+    preloadImages(images);
+    $('#background').css('background-image', newBackground());
 
-    /* New background on logo click */
+    /* Two new backgrounds on logo click with fade */
     $('#bingle').on('click', function() {
-        newBackground();
+        $('#background').fadeOut(500, function () {
+            $(this).css('background-image', newBackground()).fadeIn(500);
+        });
+        setTimeout(() => {
+            $('#background').fadeOut(500, function () {
+                $(this).css('background-image', newBackground()).fadeIn(500);
+            });
+        }, 1500);
     });
 
     /* Search query with button click */
