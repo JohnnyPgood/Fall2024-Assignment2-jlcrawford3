@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--JP Crawford-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingle</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="stylesheet" href="./style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+            integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" 
+            crossorigin="anonymous"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.0/jquery-ui.min.js" 
+            integrity="sha384-8EM386r8XMMzwGPUxfGNr6c1wIOYnPQBJ6VFxzKCZeklpQarHoZGB40kdNDA3gYr" 
+            crossorigin="anonymous"></script>
+    <!-- jQuery UI Theme -->
+    <link rel="stylesheet" 
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.0/themes/smoothness/jquery-ui.css" 
+          integrity="sha384-AUxBc4TYOEuk4Hp24650vW1R1zXkuFE8IK5cgdi5qyXRKuc1Xx2ndBiefujL0Qho" 
+          crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="bingle">
+            <div class="logo"></div>
+            <h1>Alphasoft Bingle</h1>
+        </div>
+        <div class="interface">
+            <div class="search-bar">
+                <input type="text" id="query" placeholder="Search the web">
+                <button class="gopilot-button"></button>
+            </div>
+            <div class="buttons">
+                <button id="searchButton">Search</button>
+                <button id="luckyButton">I'm Feeling Lucky</button>
+                <button id="timeButton">Current Time</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="searchResults"></div>
+        <div id="time"></div>
+    </main>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
