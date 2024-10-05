@@ -45,3 +45,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Course: CS330 - Web Development
 - Semester: Fall 2024
 - Author: JP Crawford
+
+For this assignment's preparation, the author has utilized *Perplexity AI*, a
+language model created by *Perplexity AI Inc*. Within this assignment,
+Perplexity AI was used for purposes such as researching technical aspects of
+HTML, CSS, and JavaScript, and explaining design functions and parameters.
+Specifically, Perplexity AI assisted in the development of a smaller scrollbar,
+styling dialogs, preloading and fading of background images, and the spinning logo.
+
+All background images used were sourced from Unsplash.com.
