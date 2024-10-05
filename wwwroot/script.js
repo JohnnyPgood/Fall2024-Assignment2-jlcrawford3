@@ -8,7 +8,7 @@ function apiSearch(feelingLucky = false) {
     };
 
     startSpin();
-    
+
     $.ajax({
         url: 'https://api.bing.microsoft.com/v7.0/search?' + $.param(params),
         type: 'GET',
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
     /* Search query with Lucky button click */
     $('#luckyButton').on('click', function() {
-        if ($('#query').val() === '') {
+        if ($('#query').val() !== '') {
             apiSearch(true);
         }
     });
