@@ -33,8 +33,7 @@ function apiSearch(feelingLucky = false) {
                     results += `<p><a href="${data.webPages.value[i].url}">${data.webPages.value[i].name}</a>: ${data.webPages.value[i].snippet}</p>`;
                 }
 
-                $('#searchResults').html(results);
-                $('#searchResults').css('visibility', 'visible');
+                $('#searchResults').html(results).css('visibility', 'visible');
             }
         })
         .fail(function () {
@@ -140,6 +139,13 @@ $(document).ready(function () {
     $('#query').on('keypress', function(e) {
         if (e.which === 13 && $('#query').val() !== '') {
             apiSearch();
+        }
+    });
+
+    /* Clear search results */
+    $('#query').on('input', function() {
+        if ($(this).val() === '') {
+            $('#searchResults').empty().css('visibility', 'hidden');
         }
     });
 
