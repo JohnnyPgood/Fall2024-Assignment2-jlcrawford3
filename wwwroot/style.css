@@ -69,7 +69,7 @@ header {
     cursor: pointer;
 }
 
-.logo {
+#logo {
     width: 2rem;
     height: 2rem;
     background-image: url('media/alphasoft.svg');
@@ -77,6 +77,15 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
 }
 
 h1 {

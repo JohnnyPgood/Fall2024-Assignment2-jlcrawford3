@@ -7,6 +7,8 @@ function apiSearch(feelingLucky = false) {
         'mkt': 'en-us'
     };
 
+    startSpin();
+    
     $.ajax({
         url: 'https://api.bing.microsoft.com/v7.0/search?' + $.param(params),
         type: 'GET',
@@ -15,6 +17,7 @@ function apiSearch(feelingLucky = false) {
         }
     })
         .done(function (data) {
+            stopSpin();
             if (feelingLucky) {
                 if (data.webPages && data.webPages.value && data.webPages.value.length > 0) {
                     window.location.href = data.webPages.value[0].url;
@@ -39,6 +42,7 @@ function apiSearch(feelingLucky = false) {
             }
         })
         .fail(function () {
+            stopSpin();
             alert('error');
         });
 }
@@ -94,6 +98,16 @@ function currentTime() {
     return `${hours}:${minutes}`;
 }
 
+/* Spin the logo */
+function startSpin() {
+    $('#logo').addClass('spin');
+}
+
+/* Stop the logo spin */
+function stopSpin() {
+    $('#logo').removeClass('spin');
+}
+
 $(document).ready(function () {
     /* Clear input text fields on reload */
     $('#query').val('');
@@ -105,6 +119,7 @@ $(document).ready(function () {
 
     /* Two new backgrounds on logo click with fade */
     $('#bingle').on('click', function() {
+        startSpin();
         $('#background').fadeOut(500, function () {
             $(this).css('background-image', newBackground()).fadeIn(500);
         });
@@ -112,6 +127,9 @@ $(document).ready(function () {
             $('#background').fadeOut(500, function () {
                 $(this).css('background-image', newBackground()).fadeIn(500);
             });
+            setTimeout(() => {
+                stopSpin();
+            }, 2000);
         }, 1500);
     });
 
