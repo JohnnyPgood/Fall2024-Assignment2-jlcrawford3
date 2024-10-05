@@ -34,11 +34,7 @@ function apiSearch(feelingLucky = false) {
                 }
 
                 $('#searchResults').html(results);
-                $('#searchResults').dialog({
-                    open: function () {
-                        $(this).css('visibility', 'visible');
-                    }
-                });
+                $('#searchResults').css('visibility', 'visible');
             }
         })
         .fail(function () {
@@ -135,7 +131,9 @@ $(document).ready(function () {
 
     /* Search query with button click */
     $('#searchButton').on('click', function() {
-        apiSearch();
+        if ($('#query').val() !== '') {
+            apiSearch();
+        }
     });
 
     /* Search query with Enter*/
