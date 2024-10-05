@@ -89,7 +89,7 @@ function gopilotAlert() {
 function currentTime() {
     const date = new Date();
     const hours = date.getHours();
-    const minutes = date.getMinutes();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
 }
 
@@ -176,7 +176,6 @@ $(document).ready(function () {
     /* Current Time Button Press */
     $('#timeButton').on('click', function() {
         $('#timeDialog').dialog({
-            modal: true,
             open: function() {
                 $('#timeDisplay').text(currentTime());
             }
